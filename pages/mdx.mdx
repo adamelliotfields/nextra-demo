@@ -1,0 +1,75 @@
+import { PlusIcon, MinusIcon, ReloadIcon } from '@radix-ui/react-icons'
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+export function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    <Card className="w-full max-w-md flex flex-col space-y-4">
+      <CardHeader className="mb-2">
+        <CardTitle>Counter</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col items-center justify-center space-y-4">
+        <div className="w-full h-32 bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center rounded-md">
+          <span className="text-7xl font-mono">{count}</span>
+        </div>
+        <fieldset className="w-full border rounded-md p-4">
+          <legend className="px-1 text-sm font-medium">Menu</legend>
+          <div className="flex justify-around">
+            {[
+              { icon: PlusIcon, children: 'Increment', onClick: () => setCount((prev) => prev + 1) },
+              { icon: MinusIcon, children: 'Decrement', onClick: () => setCount((prev) => prev - 1)},
+              { icon: ReloadIcon, children: 'Reset', onClick: () => setCount(0)}
+            ].map(({ children, onClick, icon: Icon }) => (
+              <Button key={`${children}-button`} className="w-12 h-12 rounded-full" size="icon" variant="ghost" onClick={onClick}>
+                <Icon className="w-6 h-6" />
+                <span className="sr-only">{children}</span>
+              </Button>
+            ))}
+          </div>
+        </fieldset>
+      </CardContent>
+    </Card>
+  )
+}
+
+# Using MDX
+
+Need to define a variable or function in your MDX? You just need to `export{:js}` it.
+
+```jsx copy
+export function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    <Card className="w-full max-w-md flex flex-col space-y-4">
+      <CardHeader className="mb-2">
+        <CardTitle>Counter</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col items-center justify-center space-y-4">
+        <div className="w-full h-32 bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center rounded-md">
+          <span className="text-7xl font-mono">{count}</span>
+        </div>
+        <fieldset className="w-full border rounded-md p-4">
+          <legend className="px-1 text-xl">🧮</legend>
+          <div className="flex justify-around">
+            {[
+              { icon: PlusIcon, children: 'Increment', onClick: () => setCount((prev) => prev + 1) },
+              { icon: MinusIcon, children: 'Decrement', onClick: () => setCount((prev) => prev - 1)},
+              { icon: ReloadIcon, children: 'Reset', onClick: () => setCount(0)}
+            ].map(({ children, onClickm, icon: Icon }) => (
+              <Button className="w-12 h-12 rounded-full" size="icon" variant="ghost" onClick={onClick}>
+                <Icon className="w-6 h-6" />
+                <span className="sr-only">{children}</span>
+              </Button>
+            ))}
+          </div>
+        </fieldset>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+<Counter />

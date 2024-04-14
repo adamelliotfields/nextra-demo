@@ -1,0 +1,26 @@
+import { FileTree } from 'nextra/components'
+
+# Notes on folders
+
+<FileTree>
+  <FileTree.Folder name="folder" defaultOpen>
+    <FileTree.File name="_meta.json" />
+    <FileTree.File name="notes.mdx" />
+  </FileTree.Folder>
+</FileTree>
+
+The name of this file is `folder/notes.mdx`, which sets the URL path to `/folder/notes`.
+
+The heading above is `Notes on folders`, which becomes the page `<title>{:html}`.
+
+In `folder/_meta.json`, we set the `notes` key to `📂 Folder notes` to set the title of the sidebar link.
+
+```jsonc filename="_meta.json" {5} showLineNumbers copy
+// use `{5}` to highlight line 5
+// use `copy` to add a copy button (on hover)
+{
+  "notes": {
+    "title": "📂 Folder notes"
+  }
+}
+```

@@ -1,0 +1,19 @@
+import Script from 'next/script'
+
+<Script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs" strategy="lazyOnload" />
+<Script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis" strategy="lazyOnload" />
+
+# External scripts
+
+Use Next's `<Script />{:jsx}` component at the top of your MDX document to load external scripts. This page has [tf](https://js.tensorflow.org/api/latest/) and [tfvis](https://js.tensorflow.org/api_vis/latest/) loaded in the console. Navigate to a different page and refresh to unload them.
+
+```jsx showLineNumbers copy
+import Script from 'next/script'
+
+<Script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs" strategy="lazyOnload" />
+<Script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis" strategy="lazyOnload" />
+```
+
+If your React components depend on a script being loaded, then use the `beforeInteractive` strategy. The default `afterInteractive` strategy loads immediately after hydration.
+
+The `lazyOnload` strategy appears to be the same as [Astro](https://docs.astro.build/en/guides/framework-components/#hydrating-interactive-components)'s `client:idle` directive.

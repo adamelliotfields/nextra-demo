@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@tsconfig/next/tsconfig.json",
+  "include": [".next/types/**/*.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": [".next", "node_modules", "out"],
+  "compilerOptions": {
+    "target": "esnext",
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/components": ["components"],
+      "@/components/*": ["components/*"],
+      "@/lib": ["lib"],
+      "@/lib/*": ["lib/*"],
+      "@/pages": ["pages"],
+      "@/pages/*": ["pages/*"],
+      "@/styles": ["styles"],
+      "@/styles/*": ["styles/*"]
+    }
+  }
+}
